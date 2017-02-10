@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209052114) do
+ActiveRecord::Schema.define(version: 20170209055221) do
 
   create_table "choices", force: :cascade do |t|
     t.string   "text"
     t.integer  "correct"
-    t.integer  "question_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["question_id"], name: "index_choices_on_question_id"
+    t.integer  "questions_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["questions_id"], name: "index_choices_on_questions_id"
   end
 
   create_table "quiestions", force: :cascade do |t|

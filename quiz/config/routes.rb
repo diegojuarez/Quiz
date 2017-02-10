@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'quiz/index'
-  post 'quiz/start'
+  post 'quiz/start' => "quiz#start"
   get 'quiz/quiestion'
   post 'quis/quiestion'
   post 'quiz/asnwer'

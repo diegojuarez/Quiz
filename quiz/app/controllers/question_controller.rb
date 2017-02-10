@@ -1,4 +1,4 @@
-class QuiestionController < ApplicationController
+class QuestionController < ApplicationController
   def index
     @questions = Question.all
     @questions.sort{|a,b|a.text <=> b.text}
