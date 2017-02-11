@@ -1,4 +1,4 @@
-class Quiestion < ApplicationRecord
+class Question < ApplicationRecord
   has_many :choices
 
   def uncorrect

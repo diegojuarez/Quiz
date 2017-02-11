@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170209055221) do
     t.index ["questions_id"], name: "index_choices_on_questions_id"
   end
 
-  create_table "quiestions", force: :cascade do |t|
+  create_table "questions", force: :cascade do |t|
     t.string   "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
