@@ -1,6 +1,6 @@
 class ChoicesController < ApplicationController
   def create
-    @question = Question.find(params[:question])
+    @question = Question.find(params[:questions])
     text = params[:text]
     correct = params[:correct] == '1'
     new = Choice.create(:text => text, :correct => correct, :question_id => @question.id)
@@ -12,7 +12,7 @@ class ChoicesController < ApplicationController
   end
 
   def destroy
-    @question = Question.find(params[:question])
+    @question = Question.find(params[:questions])
     @choice = Choice.find(params[:choice])
     @choice.destroy
 

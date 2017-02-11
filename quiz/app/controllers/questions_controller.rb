@@ -1,7 +1,7 @@
-class QuestionController < ApplicationController
+class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-    @questions.sort{|a,b|a.text <=> b.text}
+    @questions.sort {|a,b| a.text <=> b.text}
 
     respond_to do |format|
       format.html
@@ -31,28 +31,29 @@ class QuestionController < ApplicationController
   end
 
   def create
-    @question = Question.new(params_question)
+    @question = Question.new (params_question)
 
     respond_to do |format|
       if @question.save
-        format.html {redirect_to (render :xml => @question, :notice => 'Pregunta agregada exitosamente.')}
-        format.xml {render :xml => @question.errors, :status => :created, location => @question}
+        format.html {redirect_to(@question, :notice => 'Pregunta agregada exitosamente')}
+        format.xml {render :xml => @question, :status => :created, :location => @question}
       else
         format.html {render :action => 'new'}
-        format.xml {render :xml => @question.errors, :status => unprocessable_entity}
+        format.xml {render :xml => @question.errors, :status => :unprocessable_entity}
       end
     end
   end
 
   def update
     @question = Question.find(params[:id])
+
     respond_to do |format|
       if @question.update_attributes(params_question)
-        format.html{redirect_to(@question, :notice => 'Pregunta actualizada exitosamente.')}
-        format.xml{head :ok}
+        format.html {redirect_to(@question, :notice => 'Pregunta actualizada correctamente')}
+        format.xml {head :ok}
       else
-        format.html{render :action => 'edit'}
-        format.xml{render :xml => @question.errors, :status => :unprocessable_entity}
+        format.html {render :action => 'edit'}
+        format.xml {render :xml => @question.errors, :status => :unprocessable_entity}
       end
     end
   end
@@ -60,9 +61,15 @@ class QuestionController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
+
     respond_to do |format|
-      format.html{redirect_to(question_url)}
-      format.xml{head :ok}
+      format.html {redirect_to(question_url)}
+      format.xml {head :ok}
     end
+  end
+
+  private
+  def params_question
+    params.require(:question).permit(:text)
   end
 end
