@@ -12,6 +12,7 @@ class QuizController < ApplicationController
     redirect_to :action => 'questions'
   end
 
+
   def question
     @current = session[:current]
     @total = session[:total]
