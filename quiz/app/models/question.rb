@@ -1,4 +1,4 @@
-class Question < ApplicationRecord
+class Question < ActiveRecord::Base
   has_many :choices
 
   def uncorrect

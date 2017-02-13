@@ -1,3 +1,3 @@
-class Choice < ApplicationRecord
-  belongs_to :questions
+class Choice < ActiveRecord::Base
+  belongs_to :question
 end
